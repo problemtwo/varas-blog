@@ -14,21 +14,22 @@ window.onload = () =>
 {
  function refresh()
  {
-  const node = document.getElementById('filelist');
-  while(node.firstChild){node.removeChild(node.firstChild);}
+  [...document.getElementsByClassName('cell')].forEach(v => {
+   document.body.removeChild(v);
+  });
   for(let key in file_data)
   {
    const div = document.createElement('div');
-   div.classList.add('file');
-   div.innerHTML = key;
+   div.classList.add('cell');
+   div.innerHTML = '<div><div>' + key + '</div></div>';
    div.onclick = () =>
    {
-    let fl = file_data[div.innerHTML];
+    const fl = file_data[div.children[0].children[0].innerHTML];
     document.getElementById('m-title').value = fl.name;
     document.getElementById('m-date').value = fl.date;
     document.getElementById('m-message').value = fl.text;
    };
-   document.getElementById('filelist').appendChild(div);
+   document.body.insertBefore(div,document.getElementById('content-2'));
   }
  };
 
@@ -38,6 +39,13 @@ window.onload = () =>
   const filedate = document.getElementById('m-date').value;
   const filedata = document.getElementById('m-message').value;
   file_data[filename] = new Fl(filename,filedate,filedata);
+  refresh();
+ };
+
+ document.getElementById('delete').onclick = () =>
+ {
+  const filename = document.getElementById('m-title').value;
+  delete file_data[filename];
   refresh();
  };
 
@@ -77,6 +85,8 @@ window.onload = () =>
    document.body.appendChild(a);
    a.click();
    document.body.removeChild(a);
+   ctrl = false;
   }
  }
+ window.onkeyup = e => {if(e.keyCode === 17){ctrl = false;}};
 };

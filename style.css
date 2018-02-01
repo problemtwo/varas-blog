@@ -1,23 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Handlee');
 h1,div,textarea,button{font-family:'Handlee';}
-h1::-moz-selection,div::-moz-selection,textarea::-moz-selection,button::-moz-selection{background:#000;color:#fff;}
-h1::selection,div::selection,textarea::selection,button::selection{background:#000;color:#fff;}
+h1::-moz-selection,div::-moz-selection,textarea::-moz-selection,button::-moz-selection{background:#f18f01;color:#fff;}
+h1::selection,div::selection,textarea::selection,button::selection{background:#f18f01;color:#fff;}
 html,body
 {
  margin:0;
  padding:0;
  width:100%;
  height:100%;
- overflow:hidden;
 }
-#title{width:100%;height:10%;text-align:center;}
-#filelist{width:100%;height:10%;overflow:auto;white-space:nowrap;}
-#filelist>div{display:inline-block;font-size:2em;-moz-user-select:none;
-              width:10%;height:100%;text-align:center;user-select:none;}
-.m{margin-left:20%;width:60%;resize:none;font-size:2em;}
+#title{width:100%;height:10%;background:#f18f01;color:#fff;margin:0;
+       padding:0;display:flex;justify-content:center;align-items:center;}
+#title::-moz-selection{background:#fff;color:rgba(241,143,1,0.99);}
+#title::selection{background:rgba(255,255,255,0.99);color:rgba(241,143,1,0.99);}
+#content-2{position:absolute;top:15vh;left:35vw;}
+.cell{float:left;width:100%;height:15%;}
+.cell>div{float:left;width:25%;height:100%;display:flex;justify-content:center;align-items:flex-end;}
+.cell>div>div{width:7vw;height:7vw;background:#ccc;border-radius:50%;color:#f18f01;
+          display:flex;justify-content:center;align-items:center;font-size:100%;}
+.m{height:5vh;margin-left:20%;width:70%;resize:none;font-size:2em;}
+.m#m-message{height:60vh;}
 .m:focus{outline:0;}
-textarea::-moz-placeholder{color:#000;}
-textarea::placeholder{color:#000;}
+textarea{color:#f18f01;;}
+textarea:focus{border:solid 1px #888;}
+textarea::-moz-placeholder{color:#f18f01;}
+textarea::-moz-selection{background:rgba(241,143,1,0.99);color:rgba(255,255,255,0.99);}
+textarea::placeholder{color:#f18f01;}
+button{background:#f18f01;color:#fff;border:none;outline:none;}
 #m-title{font-weight:bold;}
-#m-title,#m-date{height:5%;overflow:hidden;}
-#m-message{height:40%;}
+#m-title,#m-date{overflow:hidden;}
